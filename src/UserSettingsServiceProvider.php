@@ -2,9 +2,9 @@
 
 namespace EightAndDouble\UserSettings;
 
+use EightAndDouble\UserSettings\Commands\Initialize;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use EightAndDouble\UserSettings\Commands\UserSettingsCommand;
 
 class UserSettingsServiceProvider extends PackageServiceProvider
 {
@@ -18,8 +18,7 @@ class UserSettingsServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-usersettings')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-usersettings_table')
-            ->hasCommand(UserSettingsCommand::class);
+            ->hasMigration('create_usersettings_table')
+            ->hasCommand(Initialize::class);
     }
 }
