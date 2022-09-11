@@ -33,7 +33,8 @@
     "autoload": {
         "psr-4": {
             "EightAndDouble\\UserSettings\\": "src",
-            "EightAndDouble\\UserSettings\\Database\\Factories\\": "database/factories"
+            "EightAndDouble\\UserSettings\\Database\\Factories\\": "database/factories",
+            "EightAndDouble\\UserSettings\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "autoload-dev": {
