@@ -384,6 +384,7 @@ UserSettings::all(12)
 ## To Do
 
  1. Try to add type constraints to the values
+ 2. Add more appropriate and streamlines tests
 
 .
 
