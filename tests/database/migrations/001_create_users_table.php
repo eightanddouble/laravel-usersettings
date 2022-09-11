@@ -13,7 +13,7 @@ return new class() extends Migration
      */
     public function up()
     {
-		$users_table = (new (config('usersettings.users')))->getTable();
+        $users_table = (new (config('usersettings.users')))->getTable();
 
         Schema::create($users_table, function (Blueprint $table) {
             $table->id();
@@ -33,7 +33,7 @@ return new class() extends Migration
      */
     public function down()
     {
-		$users_table = (new (config('usersettings.users')))->getTable();
+        $users_table = (new (config('usersettings.users')))->getTable();
 
         Schema::dropIfExists($users_table);
     }

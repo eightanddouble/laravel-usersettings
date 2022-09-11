@@ -2,13 +2,10 @@
 
 namespace EightAndDouble\UserSettings\Tests\TestDatabase;
 
-use EightAndDouble\UserSettings\UserSettingsServiceProvider;
-
 use EightAndDouble\UserSettings\Tests\Models\User;
-
+use EightAndDouble\UserSettings\UserSettingsServiceProvider;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Schema;
-
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class DatabaseTestCase extends Orchestra
@@ -31,8 +28,8 @@ class DatabaseTestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-		$app['config']->set('usersettings.users', '\EightAndDouble\UserSettings\Tests\Models\User');
-		$app['config']->set('usersettings.settings_column', 'settings');
+        $app['config']->set('usersettings.users', '\EightAndDouble\UserSettings\Tests\Models\User');
+        $app['config']->set('usersettings.settings_column', 'settings');
 
         Schema::dropAllTables();
     }
@@ -45,13 +42,13 @@ class DatabaseTestCase extends Orchestra
             'password' => 'password',
         ]);
 
-		$user->settings = [
-			'theme' => [
-				'color' => 'red',
-			],
-		];
+        $user->settings = [
+            'theme' => [
+                'color' => 'red',
+            ],
+        ];
 
-		$user->save();
+        $user->save();
 
         return $this->actingAs($user);
     }

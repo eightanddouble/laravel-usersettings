@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use HasFactory;
 
-	protected $table = "acl_users";
+    protected $table = 'acl_users';
 
     /**
      * The attributes that are mass assignable.
@@ -41,9 +41,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-	public $init_settings = [
-		'theme' => [
-			'color' => 'red'
-		]
-	];
+    public $init_settings = [
+        'theme' => [
+            'color' => 'red',
+        ],
+    ];
 }

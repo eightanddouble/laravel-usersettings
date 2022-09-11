@@ -12,16 +12,15 @@ class Initialize extends Command
 
     public function handle(): int
     {
-		$users = (new (config('usersettings.users')))->get();
+        $users = (new (config('usersettings.users')))->get();
 
-		foreach($users as $user)
-		{
-			if(!$user->settings && !(empty($user->init_settings))) {
-				$user->settings = $user->init_settings;
-				$user->save();
-			}
-		}
-		
+        foreach ($users as $user) {
+            if (! $user->settings && ! (empty($user->init_settings))) {
+                $user->settings = $user->init_settings;
+                $user->save();
+            }
+        }
+
         $this->comment('Settings have been initialised!');
 
         return self::SUCCESS;
