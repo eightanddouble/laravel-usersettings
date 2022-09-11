@@ -13,10 +13,10 @@ class UserFactory extends Factory
 {
     protected $model = User::class;
 
-	protected static function newFactory()
+    protected static function newFactory()
     {
         return new UserFactory();
-    }	
+    }
 
     /**
      * Define the model's default state.
