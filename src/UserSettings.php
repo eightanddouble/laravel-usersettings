@@ -38,24 +38,31 @@ class UserSettings
     /**
      * Get the value of a specific setting.
      */
-    public function get(string $dot_notation, ?string $custom_constraint_value = null): string|null|array
+    public function get(string $dot_notation, ?string $custom_constraint_value = null, null|string|array $default = null): string|null|array
     {
         $set_constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($set_constraint_value);
 
-        return data_get($this->settings[$set_constraint_value], $dot_notation, null);
+        return data_get($this->settings[$set_constraint_value], $dot_notation, $default);
     }
 
     /**
      * Set the value of a specific setting.
      */
-    public function set(string $dot_notation, ?string $value = null, ?string $custom_constraint_value = null): void
+    public function set(string|array $dot_notation, ?string $value = null, ?string $custom_constraint_value = null): void
     {
         $set_constraint_value = $this->getConstraintValue($custom_constraint_value);
         $this->check($set_constraint_value);
         $this->dirty[$set_constraint_value] = true;
 
-        data_set($this->settings[$set_constraint_value], $dot_notation, $value);
+		if(is_array($dot_notation)) {
+			foreach ($dot_notation as $key => $value) {
+				data_set($this->settings[$set_constraint_value], $key, $value);
+			}
+		} else {
+			data_set($this->settings[$set_constraint_value], $dot_notation, $value);
+		}
+		
         $this->save($set_constraint_value);
     }
 

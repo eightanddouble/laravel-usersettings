@@ -8,6 +8,11 @@ it('can_get_settings', function () {
     $this->assertEquals('red', $color);
 });
 
+it('can_get_settings_default value', function () {
+    $color = UserSettings::get('theme.brand', default:'default_value');
+    $this->assertEquals('default_value', $color);
+});
+
 it('can_set_new_settings_with_value', function () {
     UserSettings::set('theme.size', '48');
     $size = UserSettings::get('theme.size');
@@ -18,6 +23,23 @@ it('can_set_new_settings_with_null', function () {
     UserSettings::set('theme.font');
     $font = UserSettings::get('theme.font');
     $this->assertEquals(null, $font);
+});
+
+it('can_set_new_array_of_settings', function () {
+    UserSettings::set([
+		'theme.size' => '48',
+		'theme.layout' => 'a4',
+		'brand.color' => 'purple'
+	]);
+
+    $res = UserSettings::get('theme.size');
+    $this->assertEquals('48', $res);
+
+    $res = UserSettings::get('theme.layout');
+    $this->assertEquals('a4', $res);
+
+    $res = UserSettings::get('brand.color');
+    $this->assertEquals('purple', $res);
 });
 
 it('can_set_unset_a_specific_setting', function () {
