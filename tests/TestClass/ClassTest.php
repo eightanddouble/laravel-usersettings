@@ -27,10 +27,10 @@ it('can_set_new_settings_with_null', function () {
 
 it('can_set_new_array_of_settings', function () {
     UserSettings::set([
-		'theme.size' => '48',
-		'theme.layout' => 'a4',
-		'brand.color' => 'purple'
-	]);
+        'theme.size' => '48',
+        'theme.layout' => 'a4',
+        'brand.color' => 'purple',
+    ]);
 
     $res = UserSettings::get('theme.size');
     $this->assertEquals('48', $res);

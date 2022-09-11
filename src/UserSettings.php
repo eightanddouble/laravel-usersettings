@@ -55,14 +55,14 @@ class UserSettings
         $this->check($set_constraint_value);
         $this->dirty[$set_constraint_value] = true;
 
-		if(is_array($dot_notation)) {
-			foreach ($dot_notation as $key => $value) {
-				data_set($this->settings[$set_constraint_value], $key, $value);
-			}
-		} else {
-			data_set($this->settings[$set_constraint_value], $dot_notation, $value);
-		}
-		
+        if (is_array($dot_notation)) {
+            foreach ($dot_notation as $key => $value) {
+                data_set($this->settings[$set_constraint_value], $key, $value);
+            }
+        } else {
+            data_set($this->settings[$set_constraint_value], $dot_notation, $value);
+        }
+
         $this->save($set_constraint_value);
     }
 
